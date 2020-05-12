@@ -87,9 +87,9 @@ class UsersController extends Controller
             ]);
             $new_pass=Hash::make($input_data['newPassword']);
             User::where('id',$id)->update(['password'=>$new_pass]);
-            return back()->with('message','Update Password Already!');
+            return back()->with('message','Đã cập nhật mật khẩu thành công!');
         }else{
-            return back()->with('oldpassword','Old Password is Inconrrect!');
+            return back()->with('oldpassword','Mật khẩu cũ không chính xác!');
         }
     }
 }
