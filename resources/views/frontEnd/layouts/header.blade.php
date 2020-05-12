@@ -44,7 +44,7 @@
                                 <ul class="nav navbar-nav collapse navbar-collapse">
                                     <li class="dropdown"><a href="{{url('/myaccount')}}"> Tài khoản <i class="fa fa-user"></i></a>
                                         <ul role="menu" class="sub-menu">
-                                            <li><a href="{{url('/list-products')}}">Đổi mật khẩu</a></li>
+                                            <li><a href="{{url('/reset-password')}}">Đổi mật khẩu</a></li>
                                             <li><a href="{{url('/myaccount')}}">Cập nhật tài khoản</a></li>
                                         </ul>
                                     </li>

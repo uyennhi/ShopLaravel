@@ -20,6 +20,10 @@ class UsersController extends Controller
     public function indexRegister(){
         return view('users.register');
     }
+    public function resetpassword(){
+        $user_login=User::where('id',Auth::id())->first();
+        return view('users.resetpassword',compact('user_login'));
+    }
 
     public function register(Request $request){
         $this->validate($request,[
@@ -72,5 +76,20 @@ class UsersController extends Controller
             'mobile'=>$input_data['mobile']]);
         return back()->with('message','Update profile thành công!');
 
+    }
+
+    public function updatepassword(Request $request,$id){
+        $oldPassword=User::where('id',$id)->first();
+        $input_data=$request->all();
+        if(Hash::check($input_data['password'],$oldPassword->password)){
+            $this->validate($request,[
+               'newPassword'=>'required|min:6|max:12|confirmed'
+            ]);
+            $new_pass=Hash::make($input_data['newPassword']);
+            User::where('id',$id)->update(['password'=>$new_pass]);
+            return back()->with('message','Update Password Already!');
+        }else{
+            return back()->with('oldpassword','Old Password is Inconrrect!');
+        }
     }
 }
