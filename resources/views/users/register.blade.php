@@ -9,28 +9,33 @@
                 {{Session::get('message')}}
             </div>
         @endif
-        <div class="row">
-            <div class="col-sm-4">
+        <h2 style="display:flex;justify-content: center;">Đăng ký tài khoản</h2>
+        <div class="row" style="display:flex;justify-content: center;">
+        
+            
+            
+                <div style="border:1px solid pink ;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0.20, 0, 0.19); border-radius: 15px;padding:50px;width:500px; display:flex;justify-content: center; " class="login-form" ><!--login form-->
                 <div class="signup-form"><!--sign up form-->
-                    <h2>New User Signup!</h2>
+                    
                     <form action="{{url('/register_user')}}" method="post" class="form-horizontal">
                         <input type="hidden" name="_token" value="{{csrf_token()}}">
 
-                        <input type="text" placeholder="Name" name="name" value="{{old('name')}}"/>
+                        <input style="width: 300px;" type="text" placeholder="Name" name="name" value="{{old('name')}}"/>
                         <span class="text-danger">{{$errors->first('name')}}</span>
 
-                        <input type="email" placeholder="Email Address" name="email" value="{{old('email')}}"/>
+                        <input style="width: 300px;" type="email" placeholder="Email Address" name="email" value="{{old('email')}}"/>
                         <span class="text-danger">{{$errors->first('email')}}</span>
 
-                        <input type="password" placeholder="Password" name="password" value="{{old('password')}}"/>
+                        <input style="width: 300px;" type="password" placeholder="Password" name="password" value="{{old('password')}}"/>
                         <span class="text-danger">{{$errors->first('password')}}</span>
 
-                        <input type="password" placeholder="Confirm Password" name="password_confirmation" value="{{old('password_confirmation')}}"/>
+                        <input style="width: 300px;" type="password" placeholder="Confirm Password" name="password_confirmation" value="{{old('password_confirmation')}}"/>
                         <span class="text-danger">{{$errors->first('password_confirmation')}}</span>
 
                         <button type="submit" class="btn btn-default">Signup</button>
                     </form>
                 </div><!--/sign up form-->
+            </div>
             </div>
         </div>
     </div>

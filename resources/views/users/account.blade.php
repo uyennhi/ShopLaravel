@@ -9,13 +9,17 @@
                 {{Session::get('message')}}
             </div>
         @endif
-        <div class="row">
-            <div class="col-sm-7 col-sm-offset-1">
+        <h2 style="display:flex;justify-content: flex-start;">Thông tin tài khoản</h2>
+        <div class="row" style="display:flex;justify-content: flex-start;">
+        
+            
+            
+                <div style="border:1px solid black ;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0.20, 0, 0.19); border-radius: 15px;padding:50px;width:500px; display:flex;justify-content: center; " class="login-form" ><!--login form-->
                 <div class="login-form"><!--login form-->
                     <form action="{{url('/update-profile',$user_login->id)}}" method="post" class="form-horizontal">
                         <input type="hidden" name="_token" value="{{csrf_token()}}">
                         {{method_field('PUT')}}
-                        <legend>Account Profile</legend>
+                        
                         <div class="form-group {{$errors->has('name')?'has-error':''}}">
                             <input type="text" class="form-control" name="name" id="name" value="{{$user_login->name}}" placeholder="Name">
                             <span class="text-danger">{{$errors->first('name')}}</span>
@@ -51,7 +55,7 @@
                     </form>
                 </div><!--/login form-->
             </div>
-            
+            </div>
         </div>
     </div>
     <div style="margin-bottom: 20px;"></div>
