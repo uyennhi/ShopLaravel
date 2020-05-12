@@ -37,13 +37,21 @@
                     
                 </div>
                 <div class="col-sm-4">
-                    <div class="shop-menu pull-right">
+                    <div class="mainmenu pull-right">
                         <ul class="nav navbar-nav">
                             <li><a href="{{url('/viewcart')}}"><i class="fa fa-shopping-cart"></i> Cart</a></li>
                             @if(Auth::check())
-                                <li><a href="{{url('/myaccount')}}"><i class="fa fa-user"></i> Tài khoản</a></li>
+                                <ul class="nav navbar-nav collapse navbar-collapse">
+                                    <li class="dropdown"><a href="{{url('/myaccount')}}"> Tài khoản <i class="fa fa-user"></i></a>
+                                        <ul role="menu" class="sub-menu">
+                                            <li><a href="{{url('/list-products')}}">Đổi mật khẩu</a></li>
+                                            <li><a href="{{url('/myaccount')}}">Cập nhật tài khoản</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
                                 <li><a href="{{ url('/logout') }}"><i class="fa fa-lock"></i> Thoát </a>
                                 </li>
+        
                             @else
                                 <li><a href="{{url('/login_page')}}"><i class="fa fa-lock"></i> Đăng nhập</a></li>
                                 <li><a href="{{url('/register_page')}}"><i class="fa fa-lock"></i> Đăng ký</a></li>

@@ -48,4 +48,29 @@ class UsersController extends Controller
         Session::forget('frontSession');
         return redirect('/');
     }
+
+    public function account(){
+        $countries=DB::table('countries')->get();
+        $user_login=User::where('id',Auth::id())->first();
+        return view('users.account',compact('countries','user_login'));
+    }
+
+    public function updateprofile(Request $request,$id){
+        $this->validate($request,[
+            'address'=>'required',
+            'city'=>'required',
+            'state'=>'required',
+            'mobile'=>'required',
+        ]);
+        $input_data=$request->all();
+        DB::table('users')->where('id',$id)->update(['name'=>$input_data['name'],
+            'address'=>$input_data['address'],
+            'city'=>$input_data['city'],
+            'state'=>$input_data['state'],
+            'country'=>$input_data['country'],
+            'pincode'=>$input_data['pincode'],
+            'mobile'=>$input_data['mobile']]);
+        return back()->with('message','Update profile thành công!');
+
+    }
 }
