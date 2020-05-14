@@ -50,6 +50,7 @@ Route::group(['middleware'=>'FrontLogin_middleware'],function (){
     Route::post('/submit-checkout','CheckOutController@submitcheckout');
     Route::get('/order-review','OrdersController@index');
     Route::post('/submit-order','OrdersController@order');
+    Route::get('/cod','OrdersController@cod');
 
     
 });

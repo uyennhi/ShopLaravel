@@ -35,4 +35,9 @@ class OrdersController extends Controller
             return redirect('/paypal');
         }
     }
+
+    public function cod(){
+        $user_order=Orders_model::where('users_id',Auth::id())->first();
+        return view('payment.cod',compact('user_order'));
+    }
 }
