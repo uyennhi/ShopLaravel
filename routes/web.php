@@ -46,5 +46,6 @@ Route::group(['middleware'=>'FrontLogin_middleware'],function (){
     Route::put('/update-profile/{id}','UsersController@updateprofile');
     Route::get('/reset-password','UsersController@resetpassword');
     Route::put('/update-password/{id}','UsersController@updatepassword');
+    Route::get('/check-out','CheckOutController@index');
     
 });

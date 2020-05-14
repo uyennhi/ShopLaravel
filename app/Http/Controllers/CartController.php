@@ -42,15 +42,10 @@ class CartController extends Controller
                 $sizeAtrr=explode("-",$inputToCart['size']);
                 $inputToCart['size']=$sizeAtrr[1];
                 $inputToCart['product_code']=$stockAvailable->sku;
-                $count_duplicateItems=Cart_model::where(['products_id'=>$inputToCart['products_id'],
-                    'product_color'=>$inputToCart['product_color'],
-                    'size'=>$inputToCart['size']])->count();
-                if($count_duplicateItems>0){
-                    return back()->with('message','This Item Added already');
-                }else{
-                    Cart_model::create($inputToCart);
-                    return back()->with('message','Add To Cart Already');
-                }
+                
+                Cart_model::create($inputToCart);
+                return back()->with('message','Add To Cart Already');
+                
             }else{
                 return back()->with('message','Hàng Không đủ vui lòng chọn lại.');
             }
