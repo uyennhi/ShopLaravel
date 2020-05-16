@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Auth::routes();
+
 // home controller
 Route::get('/home', 'HomeController@index')->name('home');
 
@@ -53,4 +53,13 @@ Route::group(['middleware'=>'FrontLogin_middleware'],function (){
     Route::get('/cod','OrdersController@cod');
 
     
+});
+
+Auth::routes(['register'=>false]);
+Route::get('/home', 'HomeController@index')->name('home');
+Route::group(['prefix'=>'admin','middleware'=>['auth','admin']],function (){
+    Route::get('/', 'AdminController@index')->name('admin_home');
+    /// Setting Area
+    
+///
 });
