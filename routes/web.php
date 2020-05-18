@@ -63,5 +63,10 @@ Route::group(['prefix'=>'admin','middleware'=>['auth','admin']],function (){
     Route::get('/settings', 'AdminController@settings');
     Route::get('/check-pwd','AdminController@chkPassword');
     Route::post('/update-pwd','AdminController@updatAdminPwd');
+
+
+    Route::resource('/category','CategoryController');
+
+    Route::get('/check_category_name','CategoryController@checkCateName');
 ///
 });

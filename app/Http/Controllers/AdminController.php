@@ -36,9 +36,9 @@ class AdminController extends Controller
         if(Hash::check($current_password,$check_password->password)){
             $password=bcrypt($data['pwd_new']);
             User::where('email',$email_login)->update(['password'=>$password]);
-            return redirect('/admin/settings')->with('message','Password Update Successfully');
+            return redirect('/admin/settings')->with('message','Đã cập nhật mật khẩu thành công.');
         }else{
-            return redirect('/admin/settings')->with('message','InCorrect Current Password');
+            return redirect('/admin/settings')->with('message','Cập nhật mật khẩu thất bại.');
         }
     }
 
