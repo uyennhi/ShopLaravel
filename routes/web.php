@@ -60,6 +60,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['prefix'=>'admin','middleware'=>['auth','admin']],function (){
     Route::get('/', 'AdminController@index')->name('admin_home');
     /// Setting Area
-    
+    Route::get('/settings', 'AdminController@settings');
+    Route::get('/check-pwd','AdminController@chkPassword');
+    Route::post('/update-pwd','AdminController@updatAdminPwd');
 ///
 });
