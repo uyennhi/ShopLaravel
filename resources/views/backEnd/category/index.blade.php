@@ -18,7 +18,7 @@
                     <tr>
                         <th>Category Name</th>
                         <th>Parent Category</th>
-                        <th>Created At</th>
+                        <th>Description</th>
                         <th>Status</th>
                         <th>Action</th>
                     </tr>
@@ -35,7 +35,7 @@
                                         {{$parent_cate->name}}
                                     @endforeach
                                 </td>
-                                <td style="text-align: center;"></td>
+                                <td style="text-align: center;">{{$category->description}}</td>
                                 <td style="text-align: center;">{{($category->status==0)?' Disabled':'Enable'}}</td>
                                 <td style="text-align: center;">
                                     <a href="{{route('category.edit',$category->id)}}" class="btn btn-primary btn-mini">Edit</a>
