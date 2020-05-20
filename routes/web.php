@@ -66,7 +66,7 @@ Route::group(['prefix'=>'admin','middleware'=>['auth','admin']],function (){
 
 
     Route::resource('/category','CategoryController');
-
+    Route::get('delete-category/{id}','CategoryController@destroy');
     Route::get('/check_category_name','CategoryController@checkCateName');
 ///
 });

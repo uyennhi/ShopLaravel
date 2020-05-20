@@ -60,6 +60,7 @@ class CategoryController extends Controller
     public function show($id)
     {
         //
+        echo $id;
     }
 
     /**
@@ -71,6 +72,11 @@ class CategoryController extends Controller
     public function edit($id)
     {
         //
+        $menu_active=0;
+        $plucked=Category_model::where('parent_id',0)->pluck('name','id');
+        $cate_levels=['0'=>'Main Category']+$plucked->all();
+        $edit_category=Category_model::findOrFail($id);
+        return view('backEnd.category.edit',compact('edit_category','menu_active','cate_levels'));
     }
 
     /**
@@ -82,7 +88,18 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $update_categories=Category_model::findOrFail($id);
+        $this->validate($request,[
+            'name'=>'required|max:255|unique:categories,name,'.$update_categories->id,
+            
+        ]);
+        //dd($request->all());die();
+        $input_data=$request->all();
+        if(empty($input_data['status'])){
+            $input_data['status']=0;
+        }
+        $update_categories->update($input_data);
+        return redirect()->route('category.index')->with('message','Updated Success!');
     }
 
     /**
@@ -93,7 +110,9 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $delete=Category_model::findOrFail($id);
+        $delete->delete();
+        return redirect()->route('category.index')->with('message','Delete Success!');
     }
 
     public function checkCateName(Request $request){
