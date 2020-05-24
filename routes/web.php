@@ -69,4 +69,15 @@ Route::group(['prefix'=>'admin','middleware'=>['auth','admin']],function (){
     Route::get('delete-category/{id}','CategoryController@destroy');
     Route::get('/check_category_name','CategoryController@checkCateName');
 ///
+
+    Route::resource('/product','ProductsController');
+    Route::get('delete-product/{id}','ProductsController@destroy');
+    Route::get('delete-image/{id}','ProductsController@deleteImage');
+
+    Route::resource('/product_attr','ProductAtrrController');
+    Route::get('delete-attribute/{id}','ProductAtrrController@deleteAttr');
+
+      /// Product Images Gallery
+      Route::resource('/image-gallery','ImagesController');
+      Route::get('delete-imageGallery/{id}','ImagesController@destroy');
 });
