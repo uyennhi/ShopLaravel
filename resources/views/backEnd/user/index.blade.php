@@ -19,7 +19,7 @@
                         <th>ID</th>
                         <th>Tên Người Dùng</th>
                         <th>Email Người Dùng</th>
-                        <th>Mật Khẩu</th>
+                        
                         <th>Số Điện thoại</th>
                         <th>Tỉnh/ Thành Phố</th>
                         <th>Thời Gian tạo tài khoản</th>
@@ -33,7 +33,7 @@
                                 <td>{{$user->id}}</td>
                                 <td>{{$user->name}}</td>
                                 <td style="text-align: center;">{{$user->email}}</td>
-                                <td style="text-align: center;">{{$user->password}}</td>
+                               
                                 <td style="text-align: center;">{{$user->mobile}}</td>
                                 <td style="text-align: center;">{{$user->city}}</td>
                                 <td style="text-align: center;">{{$user->created_at}}</td>

@@ -82,6 +82,8 @@ class AdUsersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $delete=User::findOrFail($id);
+        $delete->delete();
+        return redirect()->route('user.index')->with('message','Xóa Người Dùng Thành Công!');
     }
 }
