@@ -20,6 +20,12 @@
                 <li><a href="#">List Coupons</a></li>
             </ul>
         </li>
+        <li class="submenu {{$menu_active==5? ' active':''}}"> <a href="#"><i class="icon icon-th-list"></i> <span>User</span></a>
+            <ul>
+              
+                <li><a href="{{route('user.index')}}">List User</a></li>
+            </ul>
+        </li>
     </ul>
 </div>
 <!--sidebar-menu-->

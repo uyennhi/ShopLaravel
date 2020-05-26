@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\ProductAtrr_model;
-use App\Products_model;
 use Illuminate\Http\Request;
-
-class ProductAtrrController extends Controller
+use App\User;
+class AdUsersController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +13,10 @@ class ProductAtrrController extends Controller
      */
     public function index()
     {
-        //
+        $menu_active=5;
+        $i=0;
+        $Users =User::orderBy('created_at','desc')->get();
+        return view('backEnd.user.index',compact('menu_active','Users','i'));
     }
 
     /**
@@ -36,14 +37,7 @@ class ProductAtrrController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
-            'sku'=>'required',
-            'size'=>'required',
-            'price'=>'required|numeric|between:0,99.99',
-            'stock'=>'required|numeric'
-        ]);
-        ProductAtrr_model::create($request->all());
-        return back()->with('message','Add Attribute Successed');
+        //
     }
 
     /**
@@ -54,10 +48,7 @@ class ProductAtrrController extends Controller
      */
     public function show($id)
     {
-        $menu_active =3;
-        $attributes=ProductAtrr_model::where('products_id',$id)->get();
-        $product=Products_model::findOrFail($id);
-        return view('backEnd.products.add_pro_atrr',compact('menu_active','product','attributes'));
+        //
     }
 
     /**
@@ -80,13 +71,7 @@ class ProductAtrrController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request_data=$request->all();
-        foreach ($request_data['id'] as $key=>$attr){
-            $update_attr=ProductAtrr_model::where([['products_id',$id],['id',$request_data['id'][$key]]])
-                ->update(['sku'=>$request_data['sku'][$key],'size'=>$request_data['size'][$key],'price'=>$request_data['price'][$key],
-                    'stock'=>$request_data['stock'][$key]]);
-        }
-        return back()->with('message','Update Attribute Successed');
+        //
     }
 
     /**
@@ -98,11 +83,5 @@ class ProductAtrrController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    public function deleteAttr($id){
-        $deleteAttr=ProductAtrr_model::findOrFail($id);
-        $deleteAttr->delete();
-        return back()->with('message','Deleted Success!');
     }
 }

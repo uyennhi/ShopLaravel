@@ -80,4 +80,8 @@ Route::group(['prefix'=>'admin','middleware'=>['auth','admin']],function (){
       /// Product Images Gallery
       Route::resource('/image-gallery','ImagesController');
       Route::get('delete-imageGallery/{id}','ImagesController@destroy');
+
+      //management user
+      Route::resource('/user','AdUsersController');
+    Route::get('delete-user/{id}','AdUsersController@destroy');
 });
