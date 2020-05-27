@@ -54,7 +54,7 @@
                                 <h3>{{$product->p_name}}</h3>
                             </div>
                             <div class="modal-body">
-                                <div class="text-center"><img src="{{url('products/small',$product->image)}}" width="100" alt="{{$product->p_code}}"></div>
+                                <div class="text-center"><img src="{{url('products/small',$product->image)}}" width="200" alt="{{$product->p_code}}"></div>
                                 <p class="text-center">{{$product->description}}</p>
                             </div>
                         </div>

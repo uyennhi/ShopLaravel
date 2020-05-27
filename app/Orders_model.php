@@ -15,4 +15,12 @@ class Orders_model extends Model
     public function attributes(){
         return $this->hasMany(Cart_model::class,'order_id','id');
     }
+
+    public function delivery(){
+        return $this->belongsTo(delivery_model::class,'users_id','users_id');
+    }
+
+    public function user(){
+        return $this->belongsTo(User::class,'users_id','id');
+    }
 }

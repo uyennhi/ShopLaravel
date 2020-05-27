@@ -1,0 +1,147 @@
+@extends('backEnd.layouts.master')
+@section('title','List Products')
+@section('content')
+    <div id="breadcrumb"> <a href="{{url('/admin')}}" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="{{route('product.index')}}" class="current">Products</a></div>
+    <div class="container-fluid">
+        @if(Session::has('message'))
+            <div class="alert alert-success text-center" role="alert">
+                <strong>Well done!</strong> {{Session::get('message')}}
+            </div>
+        @endif
+        <div class="widget-box">
+            <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
+                <h5>List Products</h5>
+            </div>
+            <div class="widget-content nopadding">
+                <table class="table table-bordered data-table">
+                    <thead>
+                    <tr>
+                        <th>STT</th>
+                        <th>Mã Hóa Đơn</th>
+                        <th>Tên Khách Hàng</th>
+                        <th>Số Điện Thoại</th>
+                        <th>Giá đơn hàng</th>
+                        <th>Xem giỏ hàng</th>
+                        <th>Xem DVVC</th>
+                        <th>Xem TTKH</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach($list_orders as $order)
+                        <?php $i++; ?>
+                        <tr class="gradeC">
+                            <td>{{$i}}</td>
+                            <td style="text-align: center;">{{$order->id}}</td>
+                            <td style="vertical-align: middle;">{{$order->name}}</td>
+                            <td style="vertical-align: middle;">{{$order->mobile}}</td>
+                            <td style="vertical-align: middle;">{{$order->grand_total}}</td>
+                            <td style="vertical-align: middle;text-align: center;"><a href="#myModal{{$order->id}}" data-toggle="modal" class="btn btn-primary">Xem Giỏ Hàng</a></td>
+                            <td style="vertical-align: middle;text-align: center;"><a href="#myModal2{{$order->id}}" data-toggle="modal" class="btn btn-warning">Xem TTVC</a></td>
+                            <td style="vertical-align: middle;text-align: center;"><a href="#myModal3{{$order->id}}" data-toggle="modal" class="btn btn-success">Xem TTKH</a></td>
+                            <td style="text-align: center; vertical-align: middle;">
+                                <a href="#myModal{{$order->id}}" data-toggle="modal" class="btn btn-info btn-mini">View</a>
+                               
+                            </td>
+                        </tr>
+                        {{--Pop Up Model for View Ordering--}}
+                        <div id="myModal{{$order->id}}" class="modal hide">
+                            <div class="modal-header">
+                                <button data-dismiss="modal" class="close" type="button">×</button>
+                                <h3>Danh sách sản phẩm của đơn hàng: </h3>
+                                
+                            </div>
+                            <div class="modal-body">
+                                @foreach($order->attributes as $card)
+                                    <p></p>
+                                    <div class="text-center"><h4>Tên sản phẩm: {{$card->product_name}}</h4></div>
+                                    <p class="text-center">Kích thước sản phẩm{{$card->size}} </p>
+                                    <p class="text-center">Giá sản phẩm: {{$card->price}} </p>
+                                    <p class="text-center">Số Lượng Sản Phẩm: {{$card->quantity}} </p>
+                                @endforeach
+                                
+                            </div>
+                        </div>
+                        {{--Pop Up Model for View Ordering--}}
+
+                        {{--Pop Up Model for View delivery--}}
+                        <div id="myModal2{{$order->id}}" class="modal hide">
+                            <div class="modal-header">
+                                <button data-dismiss="modal" class="close" type="button">×</button>
+                                <h3>Xem Thông Tin Vận chuyển của đơn hàng: </h3>
+                                
+                            </div>
+                            <div class="modal-body">
+                                
+                                    <p></p>
+                                    <div class="text-center"><h4>Tên khách hàng: {{$order->name}}</h4></div>
+                                    <p class="text-center">Địa chỉ vận chuyển: {{$order->address}} </p>
+                                    <p class="text-center">Thành Phố: {{$order->city}} </p>
+                                    <p class="text-center">Số Điện Thoại: {{$order->mobile}} </p>
+                          
+                                
+                            </div>
+                        </div>
+                        {{--Pop Up Model for View delivery--}}
+
+                        
+                        {{--Pop Up Model for View delivery--}}
+                        <div id="myModal3{{$order->id}}" class="modal hide">
+                            <div class="modal-header">
+                                <button data-dismiss="modal" class="close" type="button">×</button>
+                                <h3>Xem Thông Tin Vận chuyển của đơn hàng: </h3>
+                                
+                            </div>
+                            <div class="modal-body">
+                                
+                                    <p></p>
+                                    <div class="text-center"><h4>Tên khách hàng: {{$order->user->name}}</h4></div>
+                                    <p class="text-center">Email của khách hàng: {{$order->user->email}} </p>
+                                    <p class="text-center">Thành Phố: {{$order->user->mobile}} </p>
+                                    
+                          
+                                
+                            </div>
+                        </div>
+                        {{--Pop Up Model for View delivery--}}
+                    @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+@endsection
+@section('jsblock')
+    <script src="{{asset('js/jquery.min.js')}}"></script>
+    <script src="{{asset('js/jquery.ui.custom.js')}}"></script>
+    <script src="{{asset('js/bootstrap.min.js')}}"></script>
+    <script src="{{asset('js/jquery.uniform.js')}}"></script>
+    <script src="{{asset('js/select2.min.js')}}"></script>
+    <script src="{{asset('js/jquery.dataTables.min.js')}}"></script>
+    <script src="{{asset('js/matrix.js')}}"></script>
+    <script src="{{asset('js/matrix.tables.js')}}"></script>
+    <script src="{{asset('js/matrix.popover.js')}}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+    <script>
+        $(".deleteRecord").click(function () {
+            var id=$(this).attr('rel');
+            var deleteFunction=$(this).attr('rel1');
+            swal({
+                title:'Are you sure?',
+                text:"You won't be able to revert this!",
+                type:'warning',
+                showCancelButton:true,
+                confirmButtonColor:'#3085d6',
+                cancelButtonColor:'#d33',
+                confirmButtonText:'Yes, delete it!',
+                cancelButtonText:'No, cancel!',
+                confirmButtonClass:'btn btn-success',
+                cancelButtonClass:'btn btn-danger',
+                buttonsStyling:false,
+                reverseButtons:true
+            },function () {
+                window.location.href="/admin/"+deleteFunction+"/"+id;
+            });
+        });
+    </script>
+@endsection

@@ -84,4 +84,7 @@ Route::group(['prefix'=>'admin','middleware'=>['auth','admin']],function (){
       //management user
       Route::resource('/user','AdUsersController');
     Route::get('delete-user/{id}','AdUsersController@destroy');
+    //management orders
+    Route::resource('/order','AdOrdersController');
+
 });

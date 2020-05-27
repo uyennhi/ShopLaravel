@@ -26,6 +26,12 @@
                 <li><a href="{{route('user.index')}}">List User</a></li>
             </ul>
         </li>
+        <li class="submenu {{$menu_active==6? ' active':''}}"> <a href="#"><i class="icon icon-th-list"></i> <span>Oder</span></a>
+            <ul>
+              
+                <li><a href="{{route('order.index')}}">List User</a></li>
+            </ul>
+        </li>
     </ul>
 </div>
 <!--sidebar-menu-->
