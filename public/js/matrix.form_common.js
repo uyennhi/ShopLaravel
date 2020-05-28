@@ -154,17 +154,17 @@ $(document).ready(function() {
 	  	console.log('modal is closed');
 	})
 
-	$('#myModal1').modal({ show: false});
-	
-	//add event to modal after closed
-	$('#myModal1').on('hidden', function () {
-	  	console.log('modal is closed');
-	})
-
 	$('#myModal2').modal({ show: false});
 	
 	//add event to modal after closed
 	$('#myModal2').on('hidden', function () {
+	  	console.log('modal is closed');
+	})
+
+	$('#myModal3').modal({ show: false});
+	
+	//add event to modal after closed
+	$('#myModal3').on('hidden', function () {
 	  	console.log('modal is closed');
 	})
 

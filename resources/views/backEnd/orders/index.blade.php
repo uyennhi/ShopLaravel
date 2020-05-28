@@ -1,7 +1,7 @@
 @extends('backEnd.layouts.master')
-@section('title','List Products')
+@section('title','List Orders')
 @section('content')
-    <div id="breadcrumb"> <a href="{{url('/admin')}}" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="{{route('product.index')}}" class="current">Products</a></div>
+    <div id="breadcrumb"> <a href="{{url('/admin')}}" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="{{route('order.index')}}" class="current">Orders</a></div>
     <div class="container-fluid">
         @if(Session::has('message'))
             <div class="alert alert-success text-center" role="alert">
@@ -21,6 +21,7 @@
                         <th>Tên Khách Hàng</th>
                         <th>Số Điện Thoại</th>
                         <th>Giá đơn hàng</th>
+                        <th>Ngày đặt hàng</th>
                         <th>Xem giỏ hàng</th>
                         <th>Xem DVVC</th>
                         <th>Xem TTKH</th>
@@ -36,6 +37,7 @@
                             <td style="vertical-align: middle;">{{$order->name}}</td>
                             <td style="vertical-align: middle;">{{$order->mobile}}</td>
                             <td style="vertical-align: middle;">{{$order->grand_total}}</td>
+                            <td style="vertical-align: middle;">{{$order->created_at}}</td>
                             <td style="vertical-align: middle;text-align: center;"><a href="#myModal{{$order->id}}" data-toggle="modal" class="btn btn-primary">Xem Giỏ Hàng</a></td>
                             <td style="vertical-align: middle;text-align: center;"><a href="#myModal2{{$order->id}}" data-toggle="modal" class="btn btn-warning">Xem TTVC</a></td>
                             <td style="vertical-align: middle;text-align: center;"><a href="#myModal3{{$order->id}}" data-toggle="modal" class="btn btn-success">Xem TTKH</a></td>
@@ -51,15 +53,20 @@
                                 <h3>Danh sách sản phẩm của đơn hàng: </h3>
                                 
                             </div>
-                            <div class="modal-body">
-                                @foreach($order->attributes as $card)
-                                    <p></p>
-                                    <div class="text-center"><h4>Tên sản phẩm: {{$card->product_name}}</h4></div>
-                                    <p class="text-center">Kích thước sản phẩm{{$card->size}} </p>
-                                    <p class="text-center">Giá sản phẩm: {{$card->price}} </p>
-                                    <p class="text-center">Số Lượng Sản Phẩm: {{$card->quantity}} </p>
-                                @endforeach
+                            <div class="modal-body" style="display:flex; flex-direction: column;">
+                            
+                                   
                                 
+                                @foreach($order->attributes as $card)
+                                <div style="display:flex;">
+                                <div><img src="{{url('products/small/',$card->product->image)}}" alt="" style="width:70px; padding-right:30px;padding-bottom:30px;" /></div>
+                                    <div>
+                                    <p style="font-size: 18px;">{{$card->product_name}}x{{$card->size}}x{{$card->quantity}}</p>
+                                    <p>x{{$card->price}}</p>
+                                    </div>
+                                    </div>
+                                @endforeach
+
                             </div>
                         </div>
                         {{--Pop Up Model for View Ordering--}}
@@ -67,18 +74,19 @@
                         {{--Pop Up Model for View delivery--}}
                         <div id="myModal2{{$order->id}}" class="modal hide">
                             <div class="modal-header">
-                                <button data-dismiss="modal" class="close" type="button">×</button>
+                                <button data-dismiss="modal" class="close" type="button">X</button>
                                 <h3>Xem Thông Tin Vận chuyển của đơn hàng: </h3>
                                 
                             </div>
-                            <div class="modal-body">
-                                
+                            <div class="modal-body" style="display:flex;">
+                                <div><img src="{{asset('img/ship.png')}}" alt="" style="width:120px; padding-right:30px;" /></div>
+                                <div>
                                     <p></p>
-                                    <div class="text-center"><h4>Tên khách hàng: {{$order->name}}</h4></div>
-                                    <p class="text-center">Địa chỉ vận chuyển: {{$order->address}} </p>
-                                    <p class="text-center">Thành Phố: {{$order->city}} </p>
-                                    <p class="text-center">Số Điện Thoại: {{$order->mobile}} </p>
-                          
+                                    <div class="text-left"><h4> Tên khách hàng: {{$order->name}}</h4></div>
+                                    <p class="text-left"> Địa chỉ vận chuyển: {{$order->address}} </p>
+                                    <p class="text-left"> Thành Phố: {{$order->city}} </p>
+                                    <p class="text-left"> Số Điện Thoại: {{$order->mobile}} </p>
+                                </div>
                                 
                             </div>
                         </div>
@@ -89,18 +97,17 @@
                         <div id="myModal3{{$order->id}}" class="modal hide">
                             <div class="modal-header">
                                 <button data-dismiss="modal" class="close" type="button">×</button>
-                                <h3>Xem Thông Tin Vận chuyển của đơn hàng: </h3>
+                                <h3>Xem Thông Tin Khách hàng của đơn hàng: </h3>
                                 
                             </div>
-                            <div class="modal-body">
-                                
+                            <div class="modal-body" style="display:flex;">
+                            <div><img src="{{asset('img/users.jpg')}}" alt="" style="width:120px; padding-right:30px;" /></div>
+                                <div>
                                     <p></p>
-                                    <div class="text-center"><h4>Tên khách hàng: {{$order->user->name}}</h4></div>
-                                    <p class="text-center">Email của khách hàng: {{$order->user->email}} </p>
-                                    <p class="text-center">Thành Phố: {{$order->user->mobile}} </p>
-                                    
-                          
-                                
+                                    <div class="text-left"><h4>Tên khách hàng: {{$order->user->name}}</h4></div>
+                                    <p class="text-left">Email của khách hàng: {{$order->user->email}} </p>
+                                    <p class="text-left">Số Điện Thoại: {{$order->user->mobile}} </p>
+                                </div>
                             </div>
                         </div>
                         {{--Pop Up Model for View delivery--}}
