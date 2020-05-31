@@ -8,6 +8,27 @@
 		
 /*scroll to top*/
 
+function myFunction(idqtt,qtt) {
+	console.log(idqtt);
+	
+	console.log(qtt);
+	if(idqtt!="" & qtt != ""){
+		$.ajax({
+			type:'get',
+			url:'http://127.0.0.1:8000/cart/update-ttquantity',
+			data:{ idqtt: idqtt, qtt: qtt },
+			
+			success:function(resp){
+				alert("cập nhật thành công số lượng!");
+				location.reload();
+				
+				
+			},error:function () {
+				alert("cập nhật không thành công!");
+			}
+		});
+	}
+  }
 $(document).ready(function(){
 	$(function () {
 		$.scrollUp({
@@ -55,7 +76,37 @@ $(document).ready(function(){
                 }
             });
 		}
-    });
+	});
+
+
+	
+	// change quanity of carts
+	$("#exampleforquanity").keyup(function () {
+		
+		var idqtt = $("#idqttexp").val();
+		console.log(idqtt);
+		var qtt = $("#quantityexp").val();
+		console.log(qtt);
+		if(idqtt!="" & qtt != ""){
+            $.ajax({
+                type:'get',
+                url:'http://127.0.0.1:8000/cart/update-ttquantity',
+				data:{ idqtt: idqtt, qtt: qtt },
+				
+                success:function(resp){
+					alert("cập nhật thành công số lượng!");
+					location.reload();
+					
+                	
+                },error:function () {
+                    alert("cập nhật không thành công!");
+                }
+            });
+		}
+	});
+	
+
+	
 	///////////// Thumnail Image
 	$(".changeImage").click(function () {
 		newImage=$(this).attr('src');

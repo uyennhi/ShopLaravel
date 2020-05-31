@@ -32,6 +32,7 @@ Route::post('/addToCart','CartController@addToCart')->name('addToCart');
 Route::get('/viewcart','CartController@index');
 Route::get('/cart/deleteItem/{id}','CartController@deleteItem');
 Route::get('/cart/update-quantity/{id}/{quantity}','CartController@updateQuantity');
+Route::get('/cart/update-ttquantity','CartController@updatettQuantity');
 
 //login
 Route::get('/login_page','UsersController@index');

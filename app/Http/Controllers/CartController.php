@@ -69,6 +69,41 @@ class CartController extends Controller
 
     }
 
+    public function updatettQuantity(Request $request ){
+        $data = $request->all();
+        $id = $data['idqtt'];
+        echo $id;
+        
+        $quantity = $data['qtt'];
+        echo $quantity;
+        Session::forget('discount_amount_price');
+        Session::forget('coupon_code');
+        $sku_size=DB::table('cart')->select('product_code','size','quantity')->where('id',$id)->first();
+        $stockAvailable=DB::table('product_att')->select('stock')->where(['sku'=>$sku_size->product_code,
+            'size'=>$sku_size->size])->first();
+        $updated_quantity=$quantity;
+        echo $quantity;
+        if($stockAvailable->stock>=$updated_quantity){
+            DB::table('cart')->where('id',$id)->update([
+                'quantity' => $quantity
+             ]);
+             $session_id=Session::get('session_id');
+            $cart_datas=Cart_model::where('session_id',$session_id)->get();
+            $total_price=0;
+            foreach ($cart_datas as $cart_data){
+                $total_price+=$cart_data->price*$cart_data->quantity;
+            }
+            return view('frontEnd.cart',compact('cart_datas','total_price'));
+        }else{
+            return back()->with('message','Stock is not Available!');
+        }
+
+
+    }
+
+
+   
+
     public function deleteItem($id=null){
         $delete_item=Cart_model::findOrFail($id);
         Session::forget('discount_amount_price');
