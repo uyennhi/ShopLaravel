@@ -131,5 +131,35 @@ $(document).ready(function(){
             $("#shipping_pincode").val("");
             $("#shipping_mobile").val("");
 		}
-    });
+	});
+	
+
+	// search live
+	$('#search_name').keyup(function(){ 
+		var query = $(this).val();
+		if(query == ''){
+			$('#countryList').fadeOut(1); 
+		}
+        if(query != '')
+        {
+         var _token = $('input[name="_token"]').val();
+         $.ajax({
+          url:'/autocomplete/fetch',
+          method:"get",
+          data:{query:query, _token:_token},
+          success:function(data){
+           $('#countryList').fadeIn(1);  
+                    $('#countryList').html(data);
+          }
+         });
+        }
+	});
+	
+	
+
+    $(document).on('click', 'li', function(){  
+        $('#search_name').val($(this).text());  
+        $('#countryList').fadeOut();  
+    });  
+
 });

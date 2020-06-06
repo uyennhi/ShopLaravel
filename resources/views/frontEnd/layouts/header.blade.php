@@ -66,7 +66,7 @@
     <div class="header-bottom"><!--header-bottom-->
         <div class="container">
             <div class="row">
-                <div class="col-sm-9">
+                <div class="col-sm-7">
                     <div class="navbar-header">
                         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                             <span class="sr-only">Toggle navigation</span>
@@ -89,10 +89,23 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-sm-3">
-                    <div class="search_box pull-right">
-                        <input type="text" placeholder="Search"/>
-                    </div>
+                <div class="col-sm-5">
+                    
+                        <div class="form-group"  class="row">
+                            <form action="{{url('/search')}}" method="get">
+                            <input type="hidden" name="_token" value="{{csrf_token()}}">
+                                <div class="col-sm-10">
+                                    <input type="text" name="search_name" id="search_name" class="form-control input-lg m-0 p-0" placeholder="Search" autocomplete="off" />
+                                    <div id="countryList">
+                                    </div>
+                                </div>
+                                <button class="col-sm-2 btn-lg" style="float:left;"  type="submit"><i class="fa fa-search"></i></button>
+                            
+                            
+                            </form>
+                        </div>
+                        
+                    
                 </div>
             </div>
         </div>

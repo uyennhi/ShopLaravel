@@ -33,7 +33,9 @@ Route::get('/viewcart','CartController@index');
 Route::get('/cart/deleteItem/{id}','CartController@deleteItem');
 Route::get('/cart/update-quantity/{id}/{quantity}','CartController@updateQuantity');
 Route::get('/cart/update-ttquantity','CartController@updatettQuantity');
-
+//search
+Route::get('/autocomplete/fetch', 'IndexController@fetch')->name('autocomplete.fetch');
+Route::get('/search', 'IndexController@search');
 //login
 Route::get('/login_page','UsersController@index');
 Route::get('/register_page','UsersController@indexRegister');

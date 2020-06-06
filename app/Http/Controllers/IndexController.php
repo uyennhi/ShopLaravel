@@ -46,6 +46,13 @@ class IndexController extends Controller
         return view('frontEnd.products',compact('list_product','byCate'));
       
       }
+
+      public function search(Request $request){
+        $query = $request->get('search_name');
+        $products = DB::table('products')->join('categories','products.categories_id','=','categories.id')->select('products.*')->where('p_name','LIKE', '%' . $query . '%')->orwhere('categories.name','LIKE', '%' . $query . '%')->get();;
+        return view('frontEnd.search',compact('products'));
+     
+     }
       public function getAttrs(Request $request){
         $all_attrs=$request->all();
        // print_r($all_attrs);die();
@@ -54,4 +61,35 @@ class IndexController extends Controller
         $result_select=ProductAtrr_model::where(['products_id'=>$attr[0],'size'=>$attr[1]])->first();
         echo $result_select->price."#".$result_select->stock;
     }
+
+    function fetch(Request $request)
+    {
+        if($request->get('query'))
+        {
+            $query = $request->get('query');
+            if($query == ""){
+                return;
+            }
+          //  $data = DB::table('products')
+         //   ->join('categories', 'products.categories_id', '=', 'categories.id')
+         //   ->where('products.p_name','LIKE', '%{$query}%')
+          //  ->orwhere('categories.name','LIKE', '%{$query}%')
+         //   ->select('products.*', 'categories.name')
+         //   ->get();
+            $data= DB::table('products')->where('p_name','LIKE', '%' . $query . '%')->get();
+            $output = '<ul class="dropdown-menu" style="display:block; position:absolute; z-index:2;left: 4%;width:92%;">';
+            
+        foreach($data as $row)
+        {
+            $output .= '
+            <li><a href="#">'.$row->p_name.'</a></li>
+            ';
+            }
+            $output .= '</ul>';
+            echo $output;
+        }
+    }
+
+
+
 }
