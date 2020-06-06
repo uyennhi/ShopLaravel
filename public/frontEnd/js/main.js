@@ -157,7 +157,7 @@ $(document).ready(function(){
 	
 	
 
-    $(document).on('click', 'li', function(){  
+    $(document).on('click', '#countryList li', function(){  
         $('#search_name').val($(this).text());  
         $('#countryList').fadeOut();  
     });  

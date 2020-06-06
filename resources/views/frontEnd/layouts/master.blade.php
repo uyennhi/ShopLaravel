@@ -13,6 +13,7 @@
     <link href="{{asset('frontEnd/css/price-range.css')}}" rel="stylesheet">
     <link href="{{asset('frontEnd/css/animate.css')}}" rel="stylesheet">
     <link href="{{asset('frontEnd/css/main.css')}}" rel="stylesheet">
+    <link href="{{asset('frontEnd/css/sliceshow.css')}}" rel="stylesheet">
     <link href="{{asset('frontEnd/css/responsive.css')}}" rel="stylesheet">
     <!--[if lt IE 9]>
     <script src="{{asset('frontEnd/js/html5shiv.js')}}"></script>
@@ -25,56 +26,13 @@
 
            
 
-            .topnav .search-container {
-                float: right;
-                
-            }
-
-                .topnav input[type=text] {
-                padding: 6px;
-                margin-top: 8px;
-                
-                font-size: 17px;
-                border: none;
-                }
-
-                .topnav .search-container button {
-                float: right;
-                padding: 6px 10px;
-                margin-top: 8px;
-                margin-right: 16px;
-                background: #ddd;
-                
-                font-size: 17px;
-                border: none;
-                cursor: pointer;
-                }
-
-                .topnav .search-container button:hover {
-                background: #ccc;
-                }
-
-                @media screen and (max-width: 600px) {
-                    .topnav .search-container {
-                        float: none;
-                    }
-                    .topnav input[type=text], .topnav .search-container button {
-                        float: none;
-                        display: block;
-                        text-align: left;
-                        width: 100%;
-                        margin: 0;
-                        padding: 14px;
-                    }
-                    .topnav input[type=text] {
-                        border: 1px solid #ccc;  
-                    }
-                }
+           
 </style>
 </head><!--/head-->
 
 <body>
 @include('frontEnd.layouts.header')
+@yield('sliceshow')
 @section('slider')
     @include('frontEnd.layouts.slider')
 @show
@@ -86,7 +44,10 @@
 <script src="{{asset('frontEnd/js/price-range.js')}}"></script>
 <script src="{{asset('frontEnd/js/jquery.prettyPhoto.js')}}"></script>
 <script src="{{asset('frontEnd/js/main.js')}}"></script>
+<script src="{{asset('frontEnd/js/sliceshow.js')}}"></script>
 <script src="{{asset('easyzoom/dist/easyzoom.js')}}"></script>
+
+
 <script>
     // Instantiate EasyZoom instances
     var $easyzoom = $('.easyzoom').easyZoom();
