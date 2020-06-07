@@ -1,4 +1,5 @@
 <header id="header"><!--header-->
+<div class="sticky-mune" id="hello-sticky">
     <div class="header_top"><!--header_top-->
         <div class="container">
             <div class="row">
@@ -11,34 +12,8 @@
                     </div>
                 </div>
                 <div class="col-sm-6">
-                    <div class="social-icons pull-right">
-                        <ul class="nav navbar-nav">
-                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                            <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-                            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div><!--/header_top-->
-
-    <div class="header-middle"><!--header-middle-->
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-8">
-                    <div >
-                        <div class="logo pull-left">
-                            <a href="{{url('/')}}">SHOP</a>
-                        </div>
-                    </div>
-                    
-                </div>
-                <div class="col-sm-4">
-                    <div class="mainmenu pull-right">
-                        <ul class="nav navbar-nav">
+                <div class="mainmenu pull-right">
+                        <ul class="nav navbar-nav collapse navbar-collapse">
                             <li><a href="{{url('/viewcart')}}"><i class="fa fa-shopping-cart"></i> Cart</a></li>
                             @if(Auth::check())
                                 <ul class="nav navbar-nav collapse navbar-collapse">
@@ -61,9 +36,8 @@
                 </div>
             </div>
         </div>
-    </div><!--/header-middle-->
-
-    <div class="header-bottom"><!--header-bottom-->
+    </div><!--/header_top-->
+    <div class="header-bottom" ><!--header-bottom-->
         <div class="container">
             <div class="row">
                 <div class="col-sm-7">
@@ -77,15 +51,15 @@
                     </div>
                     <div class="mainmenu pull-left">
                         <ul class="nav navbar-nav collapse navbar-collapse">
-                            <li><a href="{{url('/')}}" class="active">Home</a></li>
+                            <li><a href="{{url('/')}}"><img src="{{asset('img/cart1.png')}}" style="width:60px;" alt="" /></a></li>
                             <li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
                                 <ul role="menu" class="sub-menu">
-                                    <li><a href="{{url('/list-products')}}">Products</a></li>
-                                    <li><a href="{{url('/myaccount')}}">Account</a></li>
-                                    <li><a href="{{url('/viewcart')}}">Cart</a></li>
+                                    <li><a href="{{url('/list-products')}}">Sản Phẩm</a></li>
+                                    <li><a href="{{url('/myaccount')}}">Tài Khoản</a></li>
+                                    <li><a href="{{url('/viewcart')}}">Giỏ Hàng</a></li>
                                 </ul>
                             </li>
-                            <li><a href="https://www.youtube.com/channel/UCH2Ir7rPaRN8ZPL9mSpclhw" target="_blank">Contact</a></li>
+                            <li><a href="https://www.youtube.com/channel/UCH2Ir7rPaRN8ZPL9mSpclhw" target="_blank">Liên Hệ</a></li>
                         </ul>
                     </div>
                 </div>
@@ -110,4 +84,5 @@
             </div>
         </div>
     </div><!--/header-bottom-->
+</div>
 </header><!--/header-->

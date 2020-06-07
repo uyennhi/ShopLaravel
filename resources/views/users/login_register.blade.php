@@ -15,7 +15,7 @@
         
             
             
-                <div style="border:1px solid pink ;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0.20, 0, 0.19); border-radius: 15px;padding:50px;width:500px; display:flex;justify-content: center; " class="login-form" ><!--login form-->
+                <div style="border:1px solid orange ;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0.20, 0, 0.19); border-radius: 15px;padding:50px;width:500px; display:flex;justify-content: center; " class="login-form" ><!--login form-->
                 
                     
                     <form action="{{url('/user_login')}}" method="post" class="form-horizontal">

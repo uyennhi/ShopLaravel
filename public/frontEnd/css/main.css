@@ -68,7 +68,7 @@ a#scrollUp i{
 **************************/
 
 .header_top {
-  background: none repeat scroll 0 0 #F0F0E9;
+  background: none repeat scroll 0 0 rgb(235, 206, 154);
 }
 
 .contactinfo ul li:first-child{
@@ -221,8 +221,8 @@ a#scrollUp i{
 
 
 .header-bottom {
-  padding-bottom: 30px;
-  padding-top: 30px;
+  padding-bottom: 2px;
+  padding-top: 10px;
 }
 
 .navbar-collapse.collapse{
@@ -2521,3 +2521,12 @@ h2.title {
 }
 
 
+.sticky-mune {
+  
+  
+  background:orange;
+}
+
+.product-image-wrapper:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}

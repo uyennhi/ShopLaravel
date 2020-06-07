@@ -32,10 +32,12 @@
 
 <body>
 @include('frontEnd.layouts.header')
-@yield('sliceshow')
+
 @section('slider')
     @include('frontEnd.layouts.slider')
 @show
+@yield('sliceshow1')
+<br>
 @yield('content')
 @include('frontEnd.layouts.footer')
 <script src="{{asset('frontEnd/js/jquery.js')}}"></script>

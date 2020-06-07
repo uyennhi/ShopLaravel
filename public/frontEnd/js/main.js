@@ -163,3 +163,21 @@ $(document).ready(function(){
     });  
 
 });
+
+
+window.onscroll = function() {myFunction1()};
+
+// Get the navbar
+var navbar1 = document.getElementById("hello-sticky");
+
+// Get the offset position of the navbar
+var sticky1 = navbar1.offsetTop;
+
+// Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
+function myFunction1() {
+  if (window.pageYOffset >= sticky1) {
+    navbar1.classList.add("sticky-mune")
+  } else {
+    navbar1.classList.remove("sticky-mune");
+  }
+}

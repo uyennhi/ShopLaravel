@@ -1,5 +1,22 @@
 @extends('frontEnd.layouts.master')
 @section('title','Home Page')
+@section('sliceshow1')
+<div class="slider" id="slider1">
+    <!-- Slides -->
+    <div ><img src="{{asset('img/sliceshow12.jpg')}}" style="max-width:100%;"></div>
+    <div ><img src="{{asset('img/slicehow11.jpg')}}" style="width:100%"></div>
+    <div ><img src="{{asset('img/slicehow10.jpg')}}" style="width:100%"></div>
+    <div ><img src="{{asset('img/slicehow11.jpg')}}" style="width:100%"></div>
+    <div ><img src="{{asset('img/sliceshow12.jpg')}}" style="width:100%"></div>
+    <!-- The Arrows -->
+    <i class="left" class="arrows" style="z-index:2; position:absolute;"><svg viewBox="0 0 100 100"><path d="M 10,50 L 60,100 L 70,90 L 30,50  L 70,10 L 60,0 Z"></path></svg></i>
+    <i class="right" class="arrows" style="z-index:2; position:absolute;"><svg viewBox="0 0 100 100"><path d="M 10,50 L 60,100 L 70,90 L 30,50  L 70,10 L 60,0 Z" transform="translate(100, 100) rotate(180) "></path></svg></i>
+    <!-- Title Bar -->
+    <span class="titleBar">
+        <h1>Máy tính chính hãng</h1>
+    </span>
+</div>
+@endsection
 @section('sliceshow')
     <section>
         <!-- Slideshow container -->
@@ -8,19 +25,19 @@
                 <!-- Full-width images with number and caption text -->
                     <div class="mySlides fade">
                         <div class="numbertext" style="height:500px;">1 / 3</div>
-                            <img src="{{asset('img/sliceshow5.jpg')}}" style="max-width:100%;max-height:50%;";>
+                            <img src="{{asset('img/sliceshow12.jpg')}}" style="max-width:100%;";>
                         <div class="text">Caption Text</div>
                     </div>
 
                     <div class="mySlides fade">
                         <div class="numbertext">2 / 3</div>
-                            <img src="{{asset('img/sliceshow7.jpg')}}" style="width:100%">
+                            <img src="{{asset('img/slicehow11.jpg')}}" style="width:100%">
                         <div class="text">Caption Two</div>
                     </div>
 
                     <div class="mySlides fade">
                         <div class="numbertext">3 / 3</div>
-                            <img src="{{asset('img/sliceshow4.jpg')}}" style="width:100%">
+                            <img src="{{asset('img/slicehow10.jpg')}}" style="width:100%">
                         <div class="text">Caption Three</div>
                     </div>
 
@@ -56,15 +73,15 @@
                                 <div class="single-products">
                                     <div class="productinfo text-center">
                                         <a href="{{url('/product-detail',$product->id)}}"><img src="{{url('products/small/',$product->image)}}" alt="" /></a>
-                                        <h2>$ {{$product->price}}</h2>
+                                        <h2> {{$product->price}} VNĐ</h2>
                                         <p>{{$product->p_name}}</p>
-                                        <a href="{{url('/product-detail',$product->id)}}" class="btn btn-default add-to-cart">View Product</a>
+                                        <a href="{{url('/product-detail',$product->id)}}" class="btn btn-default add-to-cart">Xem Sản Phẩm</a>
                                     </div>
                                 </div>
                                 <div class="choose">
                                     <ul class="nav nav-pills nav-justified">
-                                        <li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-                                        <li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
+                                        <li><a href="#"><i class="fa fa-plus-square"></i>Sản Phẩm</a></li>
+                                        <li><a href="#"><i class="fa fa-plus-square"></i>Chính Hãng</a></li>
                                     </ul>
                                 </div>
                             </div>

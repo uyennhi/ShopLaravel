@@ -1,98 +1,230 @@
-* {box-sizing:border-box}
-
-.mySlides {display: none}
 
 
-/* Slideshow container */
-.slideshow-container {
-  max-width: 1100px;
-  
-  position: relative;
-  margin: auto;
+
+
+
+
+
+
+
+/*sliceshow1*/
+
+.slider, 
+.slider > div {
+    /* Images default to Center Center. Maybe try 'center top'? */
+    background-position: center center;
+    display: block;
+    max-width: 1100px;
+    margin:auto;
+    height: 400px;
+    /* height: 100vh; *//* If you want fullscreen */
+    position: relative;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: rgb(250, 249, 249);
+    overflow: hidden;
+    -moz-transition: transform .4s;
+    -o-transition: transform .4s;
+    -webkit-transition: transform .4s;
+    transition: transform .4s;
+    
 }
 
-/* Hide the images by default */
-.mySlides {
-  display: none;
+.slider > div {
+    position: absolute;
 }
 
-/* Next & previous buttons */
-.prev, .next {
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  width: auto;
-  margin-top: -22px;
-  padding: 16px;
-  color: white;
-  font-weight: bold;
-  font-size: 18px;
-  transition: 0.6s ease;
-  border-radius: 0 3px 3px 0;
-  user-select: none;
+.slider > i {
+    color: #5bbd72;
+    position: absolute;
+    font-size: 60px;
+    margin: 20px;
+    top: 40%;
+    text-shadow: 0 10px 2px #213621;
+    transition: .3s;
+    width: 30px;
+    padding: 10px 13px;
+    background: #fff;
+    background: rgba(252, 246, 160, 0.3);
+    cursor: pointer;
+    line-height: 0;
+    box-sizing: content-box;
+    border-radius: 3px;
+    z-index: 4;
 }
 
-/* Position the "next button" to the right */
-.next {
-  right: 0;
-  border-radius: 3px 0 0 3px;
+.slider > i svg {
+    margin-top: 3px;
 }
 
-/* On hover, add a black background color with a little bit see-through */
-.prev:hover, .next:hover {
-  background-color: rgba(0,0,0,0.8);
+.slider > .left {
+    left: -100px;
+}
+.slider > .right {
+    right: -100px;
+}
+.slider:hover > .left {
+    left: 0;
+}
+.slider:hover > .right {
+    right: 0;
 }
 
-/* Caption text */
-.text {
-  color: #f2f2f2;
-  font-size: 15px;
-  padding: 8px 12px;
-  position: absolute;
-  bottom: 8px;
-  width: 100%;
-  text-align: center;
+.slider > i:hover {
+    background:#fff;
+    background: rgba(84, 85, 70, 0.8);
+    transform: translateX(-2px);
 }
 
-/* Number text (1/3 etc) */
-.numbertext {
-  color: #f2f2f2;
-  font-size: 12px;
-  padding: 8px 12px;
-  position: absolute;
-  top: 0;
+.slider > i.right:hover {
+    transform: translateX(2px);
 }
 
-/* The dots/bullets/indicators */
-.dot {
-  cursor: pointer;
-  height: 15px;
-  width: 15px;
-  margin: 0 2px;
-  background-color: #bbb;
-  border-radius: 50%;
-  display: inline-block;
-  transition: background-color 0.6s ease;
+.slider > i.right:active,
+.slider > i.left:active {
+    transform: translateY(1px);
 }
 
-.active, .dot:hover {
-  background-color: #717171;
+.slider:hover > div {
+    transform: scale(1.01);
 }
 
-/* Fading animation */
-.fade {
-  -webkit-animation-name: fade;
-  
-  animation-name: fade;
-  animation-duration: 1000000000s;
+.hoverZoomOff:hover > div {
+    transform: scale(1);
 }
 
-@-webkit-keyframes fade {
-  from {opacity: 1.4}
-  to {opacity: 1}
+.slider > ul {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    z-index: 4;
+    padding: 0;
+    margin: 0;
+    transform: translateX(-50%);
 }
 
-@keyframes fade {
-  from {opacity: 1.4}
-  to {opacity: 1}
+.slider > ul > li {
+    padding: 0;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    list-style: none;
+    float: left;
+    margin: 10px 10px 0;
+    cursor: pointer;
+    border: 1px solid #fff;
+    -moz-transition: .3s;
+    -o-transition: .3s;
+    -webkit-transition: .3s;
+    transition: .3s;
 }
+
+.slider > ul > .showli {
+    background-color: orange;
+    -moz-animation: boing .5s forwards;
+    -o-animation: boing .5s forwards;
+    -webkit-animation: boing .5s forwards;
+    animation: boing .5s forwards;
+}
+
+.slider > ul > li:hover {
+    background-color: orange;
+}
+
+.slider > .show {
+    z-index: 1;
+}
+
+.hideDots > ul {
+    display: none;
+}
+
+.showArrows > .left {
+    left: 0;
+}
+
+.showArrows > .right {
+    right: 0;
+}
+
+.titleBar {
+    z-index: 2;
+    display: inline-block;
+    background: rgba(122, 99, 55, 0.5);
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    transform: translateY(100%);
+    padding: 0px 20px;
+    height:70px;
+    transition: .3s;
+    color: #fff;
+}
+
+.titleBar * {
+    transform: translate(-20px, 30px);
+    transition: all 700ms cubic-bezier(0.37, 0.31, 0.2, 0.85) 200ms;
+    opacity: 0;
+}
+
+.titleBarTop .titleBar * {
+    transform: translate(-20px, -30px);
+}
+
+.slider:hover .titleBar,
+.slider:hover .titleBar * {
+    transform: translate(0);
+    opacity: 1;
+}
+
+.titleBarTop .titleBar {
+    top: 0;
+    bottom: initial;
+    transform: translateY(-100%);
+}
+
+.slider > div span {
+    display: block;
+    background: rgba(243, 240, 240, 0.5);
+    position: absolute;
+    bottom: 0;
+    color: #fff;
+    text-align: center;
+    padding: 0;
+    width: 100%;
+}
+
+
+@keyframes boing {
+    0% {
+        transform: scale(1.2);
+    }
+    40% {
+        transform: scale(.6);
+    }
+    60% {
+        transform: scale(1.2);
+    }
+    80% {
+        transform: scale(.8);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* -------------------------------------- */
+
+#slider2 {
+    max-width: 30%;
+    margin-right: 20px;
+}
+
+.row2Wrap {
+    display: flex;
+}
+
+
+
+
+

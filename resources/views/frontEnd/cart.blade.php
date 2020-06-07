@@ -24,6 +24,15 @@
                     </tr>
                     </thead>
                     <tbody>
+                        
+                        @if($cart_datas->isEmpty())
+                        <tr>
+                            <td><img src="{{asset('img/buonvl.jpg')}}" style="" alt="" /></td>
+                            <td><h2> Giỏ hàng đang rỗng <a href="{{url('/')}}"> mua ngay</a></h2></td>
+                        </tr>
+                            
+                        
+                        @endif
                         @foreach($cart_datas as $cart_data)
                             <?php
                                 $image_products=DB::table('products')->select('image')->where('id',$cart_data->products_id)->get();
