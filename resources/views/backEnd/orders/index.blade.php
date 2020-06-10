@@ -25,7 +25,8 @@
                         <th>Xem giỏ hàng</th>
                         <th>Xem DVVC</th>
                         <th>Xem TTKH</th>
-                        <th>Action</th>
+                        <th>ttvc</th>
+                        <th>tttt</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -38,11 +39,27 @@
                             <td style="vertical-align: middle;">{{$order->mobile}}</td>
                             <td style="vertical-align: middle;">{{$order->grand_total}}</td>
                             <td style="vertical-align: middle;">{{$order->created_at}}</td>
-                            <td style="vertical-align: middle;text-align: center;"><a href="#myModal{{$order->id}}" data-toggle="modal" class="btn btn-primary">Xem Giỏ Hàng</a></td>
-                            <td style="vertical-align: middle;text-align: center;"><a href="#myModal2{{$order->id}}" data-toggle="modal" class="btn btn-warning">Xem TTVC</a></td>
-                            <td style="vertical-align: middle;text-align: center;"><a href="#myModal3{{$order->id}}" data-toggle="modal" class="btn btn-success">Xem TTKH</a></td>
+                            <td style="vertical-align: middle;text-align: center;"><a href="#myModal{{$order->id}}" data-toggle="modal" class="btn btn-primary btn-mini">Giỏ Hàng</a></td>
+                            <td style="vertical-align: middle;text-align: center;"><a href="#myModal2{{$order->id}}" data-toggle="modal" class="btn btn-warning btn-mini">TTVC</a></td>
+                            <td style="vertical-align: middle;text-align: center;"><a href="#myModal3{{$order->id}}" data-toggle="modal" class="btn btn-success btn-mini">TTKH</a></td>
                             <td style="text-align: center; vertical-align: middle;">
-                                <a href="#myModal{{$order->id}}" data-toggle="modal" class="btn btn-info btn-mini">View</a>
+                               
+                                    @if($order->shipping_status)
+                                        <a  style="pointer-events: none;" href="#" data-toggle="modal"  disabled   class="btn btn-dangerous btn-mini"><span>Đã vận chuyển</span></a>
+                                    @else   
+                                        <a href="#" data-toggle="modal" rel="{{$order->id}}" rel1="update-status"   class="btn btn-danger deleteRecord"><span>Chưa vận chuyển</span></a>
+                                    @endif
+                                
+                               
+                            </td>
+                            <td style="text-align: center; vertical-align: middle;">
+                               
+                                    @if($order->pay_status)
+                                        <a  style="pointer-events: none;" href="#" data-toggle="modal"  disabled   class="btn btn-dangerous btn-mini"><span>Đã Thanh Toán</span></a>
+                                    @else   
+                                        <a href="#" data-toggle="modal" rel="{{$order->id}}" rel1="update-status1"   class="btn btn-danger deleteRecord1"><span>Chưa Thanh Toán</span></a>
+                                    @endif
+                                
                                
                             </td>
                         </tr>
@@ -134,14 +151,35 @@
             var id=$(this).attr('rel');
             var deleteFunction=$(this).attr('rel1');
             swal({
-                title:'Are you sure?',
-                text:"You won't be able to revert this!",
+                title:'xác nhận đã xử lí?',
+                text:"Bạn không thể thay đổi!",
                 type:'warning',
                 showCancelButton:true,
                 confirmButtonColor:'#3085d6',
                 cancelButtonColor:'#d33',
-                confirmButtonText:'Yes, delete it!',
-                cancelButtonText:'No, cancel!',
+                confirmButtonText:'Xác nhận',
+                cancelButtonText:'cancel',
+                confirmButtonClass:'btn btn-success',
+                cancelButtonClass:'btn btn-danger',
+                buttonsStyling:false,
+                reverseButtons:true
+            },function () {
+                window.location.href="/admin/"+deleteFunction+"/"+id;
+            });
+        });
+
+        $(".deleteRecord1").click(function () {
+            var id=$(this).attr('rel');
+            var deleteFunction=$(this).attr('rel1');
+            swal({
+                title:'xác nhận đã thanh toán?',
+                text:"Bạn không thể thay đổi!",
+                type:'warning',
+                showCancelButton:true,
+                confirmButtonColor:'#3085d6',
+                cancelButtonColor:'#d33',
+                confirmButtonText:'Xác nhận',
+                cancelButtonText:'cancel',
                 confirmButtonClass:'btn btn-success',
                 cancelButtonClass:'btn btn-danger',
                 buttonsStyling:false,

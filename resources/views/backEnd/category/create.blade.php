@@ -7,20 +7,20 @@
             <div class="span12">
             <div class="widget-box">
                 <div class="widget-title"> <span class="icon"> <i class="icon-info-sign"></i> </span>
-                    <h5>Add New Category</h5>
+                    <h5>Thêm danh mục mới</h5>
                 </div>
                 <div class="widget-content nopadding">
                     <form class="form-horizontal" method="post" action="{{route('category.store')}}" name="basic_validate" id="basic_validate" novalidate="novalidate">
                         <input type="hidden" name="_token" value="{{csrf_token()}}">
                         <div class="control-group{{$errors->has('name')?' has-error':''}}">
-                            <label class="control-label">Category Name :</label>
+                            <label class="control-label">Tên Danh mục :</label>
                             <div class="controls">
                                 <input type="text" name="name" id="name" value="{{old('name')}}" required>
                                 <span class="text-danger" id="chCategory_name" style="color: red;">{{$errors->first('name')}}</span>
                             </div>
                         </div>
                         <div class="control-group">
-                            <label class="control-label">Category Lavel :</label>
+                            <label class="control-label">Chọn danh mục cha :</label>
                             <div class="controls" style="width: 245px;">
                                 <select name="parent_id" id="parent_id">
                                         @foreach($cate_levels as $key=>$value)
@@ -40,7 +40,7 @@
                             </div>
                         </div>
                         <div class="control-group">
-                            <label class="control-label">Description :</label>
+                            <label class="control-label">Mô tả :</label>
                             <div class="controls">
                                 <textarea name="description" id="description" rows="3">{{old('description')}}</textarea>
                             </div>

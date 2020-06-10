@@ -78,8 +78,8 @@
     <section id="do_action">
         <div class="container">
             <div class="heading">
-                <h3>What would you like to do next?</h3>
-                <p>Choose if you have a discount code or reward points you want to use or would like to estimate your delivery cost.</p>
+                
+                <p>Nhập mã giảm giá nếu có</p>
             </div>
             <div class="row">
                 <div class="col-sm-6">
@@ -93,9 +93,9 @@
                             <input type="hidden" name="_token" value="{{csrf_token()}}">
                             <input type="hidden" name="Total_amountPrice" value="{{$total_price}}">
                             <div class="form-group">
-                                <label for="coupon_code">Coupon Code</label>
+                                <label for="coupon_code">Mã giảm giá</label>
                                 <div class="controls {{$errors->has('coupon_code')?'has-error':''}}">
-                                    <input type="text" class="form-control" name="coupon_code" id="coupon_code" placeholder="Promotion By Coupon">
+                                    <input type="text" class="form-control" name="coupon_code" id="coupon_code" placeholder="Nhập mã giảm giá">
                                     <span class="text-danger">{{$errors->first('coupon_code')}}</span>
                                 </div>
                                 <button type="submit" class="btn btn-primary">Apply</button>

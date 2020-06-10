@@ -86,6 +86,23 @@ class AdOrdersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $update_status=Orders_model::findOrFail($id);
+        
+        //dd($request->all());die();
+        
+        
+        $update_status->update(['shipping_status' => '1']);
+        return redirect()->route('order.index')->with('message','Updated Success!');
+    }
+
+    public function destroy1($id)
+    {
+        $update_status=Orders_model::findOrFail($id);
+        
+        //dd($request->all());die();
+        
+        
+        $update_status->update(['pay_status' => '1']);
+        return redirect()->route('order.index')->with('message','Updated Success!');
     }
 }

@@ -8,16 +8,28 @@ use App\ProductAtrr_model;
 use App\Products_model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use App\User;
+use App\Orders_model;
 
 class IndexController extends Controller
 {
     public function index(){
-       $products = Products_model::all();
+       $products = Products_model::paginate(6);
        return view('frontEnd.index',compact('products'));
     }
 
+    function fetch_data(Request $request)
+    {
+     if($request->ajax())
+     {
+        $products = Products_model::paginate(6);
+        return view('frontEnd.pagination_data', compact('products'))->render();
+     }
+    }
+
     public function shop(){
-        $products = Products_model::all();
+        $products = Products_model::paginate(6);
         $byCate="";
         return view('frontEnd.index',compact('products'));
      }
@@ -61,6 +73,13 @@ class IndexController extends Controller
         $result_select=ProductAtrr_model::where(['products_id'=>$attr[0],'size'=>$attr[1]])->first();
         echo $result_select->price."#".$result_select->stock;
     }
+
+    public function viewOrders(){
+        $id_user =Auth::user()->id;
+        $orders = Orders_model::where('users_id',$id_user)->orderBy('created_at', 'DESC')->get();
+        return view('frontEnd.viewOrders',compact('orders'));
+    }
+
 
     function fetch(Request $request)
     {

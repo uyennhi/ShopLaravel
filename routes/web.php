@@ -21,12 +21,16 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 // shows products 
 Route::get('/','IndexController@index');
+Route::get('/pagination/fetch_data', 'IndexController@fetch_data');
 Route::get('/list-products','IndexController@shop');
 Route::get('/cat/{id}','IndexController@listByCat')->name('cats');
 Route::get('/childcat/{id}','IndexController@listByChildCat')->name('childcats');
 Route::get('/product-detail/{id}','IndexController@detialpro');
 //get attributes the product
 Route::get('/get-product-attr','IndexController@getAttrs');
+Route::get('/xemdonhang','IndexController@viewOrders');
+// ma giam gia
+Route::post('/apply-coupon','CouponController@applycoupon');
 //card
 Route::post('/addToCart','CartController@addToCart')->name('addToCart');
 Route::get('/viewcart','CartController@index');
@@ -89,5 +93,11 @@ Route::group(['prefix'=>'admin','middleware'=>['auth','admin']],function (){
     Route::get('delete-user/{id}','AdUsersController@destroy');
     //management orders
     Route::resource('/order','AdOrdersController');
+    Route::get('update-status/{id}','AdOrdersController@destroy');
+    Route::get('update-status1/{id}','AdOrdersController@destroy1');
+    
+    //ma giam gia
+    Route::resource('/coupon','CouponController');
+    Route::get('delete-coupon/{id}','CouponController@destroy');
 
 });

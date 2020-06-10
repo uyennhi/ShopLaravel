@@ -21,11 +21,13 @@
                                         <ul role="menu" class="sub-menu">
                                             <li><a href="{{url('/reset-password')}}">Đổi mật khẩu</a></li>
                                             <li><a href="{{url('/myaccount')}}">Cập nhật tài khoản</a></li>
+                                            
                                         </ul>
                                     </li>
                                 </ul>
                                 <li><a href="{{ url('/logout') }}"><i class="fa fa-lock"></i> Thoát </a>
                                 </li>
+                                <li><a href="{{url('/xemdonhang')}}">Xem Đơn Hàng</a></li>
         
                             @else
                                 <li><a href="{{url('/login_page')}}"><i class="fa fa-lock"></i> Đăng nhập</a></li>
@@ -51,7 +53,7 @@
                     </div>
                     <div class="mainmenu pull-left">
                         <ul class="nav navbar-nav collapse navbar-collapse">
-                            <li><a href="{{url('/')}}"><img src="{{asset('img/cart1.png')}}" style="width:60px;" alt="" /></a></li>
+                            <li><a href="{{url('/')}}"><img src="{{asset('img/S1.png')}}" style="width:60px;" alt="" /></a></li>
                             <li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
                                 <ul role="menu" class="sub-menu">
                                     <li><a href="{{url('/list-products')}}">Sản Phẩm</a></li>

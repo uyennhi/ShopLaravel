@@ -44,7 +44,7 @@ class CartController extends Controller
                 $inputToCart['product_code']=$stockAvailable->sku;
                 
                 Cart_model::create($inputToCart);
-                return back()->with('message','Add To Cart Already');
+                return back()->with('message','Đã thêm vào giỏ hàng');
                 
             }else{
                 return back()->with('message','Hàng Không đủ vui lòng chọn lại.');

@@ -41,6 +41,7 @@
 @yield('content')
 @include('frontEnd.layouts.footer')
 <script src="{{asset('frontEnd/js/jquery.js')}}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <script src="{{asset('frontEnd/js/bootstrap.min.js')}}"></script>
 <script src="{{asset('frontEnd/js/jquery.scrollUp.min.js')}}"></script>
 <script src="{{asset('frontEnd/js/price-range.js')}}"></script>
@@ -80,6 +81,38 @@
             api2._init();
         }
     });
+
+
+
+    //pagination home page
+            $(document).ready(function(){
+
+                
+
+        $(document).on('click', '.pagination a', function(event){
+        event.preventDefault(); 
+        var page = $(this).attr('href').split('page=')[1];
+        console.log(page);
+        fetch_data(page);
+        
+        });
+
+        function fetch_data(page)
+                {
+                    
+                    $.ajax({
+                        url:"/pagination/fetch_data?page="+page,
+                        success:function(products)
+                        {
+                            console.log(products);
+                            $('#table_data').html(products);
+                        }
+                    });
+                }
+
+        });
+
+        
 </script>
 </body>
 </html>
