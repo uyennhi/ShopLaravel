@@ -10,13 +10,13 @@
         @endif
         <div class="widget-box">
             <div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
-                <h5>Add New Coupon</h5>
+                <h5>Thêm mã giảm giá mới</h5>
             </div>
             <div class="widget-content nopadding">
                 <form action="{{route('coupon.store')}}" method="post" class="form-horizontal">
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                     <div class="control-group">
-                        <label for="coupon_code" class="control-label">Coupon Code</label>
+                        <label for="coupon_code" class="control-label">Mã giảm giá</label>
                         <div class="controls{{$errors->has('coupon_code')?' has-error':''}}">
                             <input type="text" name="coupon_code" id="coupon_code" class="form-control" value="{{old('coupon_code')}}"
                                    title="" required="required" minlength="5" maxlength="15" style="width: 400px;">
@@ -24,7 +24,7 @@
                         </div>
                     </div>
                     <div class="control-group">
-                        <label for="amount" class="control-label">Amount</label>
+                        <label for="amount" class="control-label">Lượng giảm giá</label>
                         <div class="controls{{$errors->has('amount')?' has-error':''}}">
                             <input type="number" min="0" name="amount" id="amount" class="form-control" value="{{old('amount')}}" title="" required="required" style="width: 400px;">
                             <span class="text-danger">{{$errors->first('amount')}}</span>
@@ -32,17 +32,17 @@
                     </div>
 
                     <div class="control-group">
-                        <label for="amount_type" class="control-label">Amount Type</label>
+                        <label for="amount_type" class="control-label">Kiểu giảm giá</label>
                         <div class="controls{{$errors->has('amount_type')?' has-error':''}}">
                             <select name="amount_type" id="amount_type" class="form-control" style="width: 415px;">
-                                <option value="Percentage">Percentage</option>
+                                <option value="Percentage">Phần trăm</option>
                             </select>
                             <span class="text-danger">{{$errors->first('amount_type')}}</span>
                         </div>
                     </div>
 
                     <div class="control-group">
-                        <label for="expiry_date" class="control-label">Expiry Date</label>
+                        <label for="expiry_date" class="control-label">Ngày hết hạn</label>
                         <div class="controls{{$errors->has('expiry_date')?' has-error':''}}">
                             <div class="input-prepend">
                                 <div  data-date="12-02-2012" class="input-append date datepicker">
@@ -64,7 +64,7 @@
                     <div class="control-group">
                         <label for="" class="control-label"></label>
                         <div class="controls">
-                            <button type="submit" class="btn btn-success">Add New Coupon</button>
+                            <button type="submit" class="btn btn-success">Add Mã giảm giá mới</button>
                         </div>
                     </div>
                 </form>

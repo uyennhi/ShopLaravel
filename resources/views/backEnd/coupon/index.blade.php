@@ -17,10 +17,10 @@
                     <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Coupon Code</th>
-                        <th>Amount</th>
-                        <th>Amount Type</th>
-                        <th>Expiry Date</th>
+                        <th>Mã giảm giá</th>
+                        <th>Lượng giảm giá</th>
+                        <th>Loại giảm giá</th>
+                        <th>Ngày hết hạn</th>
                         <th>Status</th>
                         <th>Action</th>
                     </tr>

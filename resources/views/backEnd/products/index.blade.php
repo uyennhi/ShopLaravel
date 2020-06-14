@@ -16,15 +16,15 @@
                 <table class="table table-bordered data-table">
                     <thead>
                     <tr>
-                        <th>ID</th>
+                    <th>ID</th>
                         <th>Image</th>
-                        <th>Product Name</th>
-                        <th>Under Category</th>
-                        <th>Code Of Product</th>
-                        <th>Product Color</th>
-                        <th>Price</th>
+                        <th>Tên sản phẩm</th>
+                        <th>Loại danh mục</th>
+                        <th>Mã sản phẩm</th>
+                        <th>Màu</th>
+                        <th>Giá</th>
                         <th>Image Gallery</th>
-                        <th>Add Attribute</th>
+                        <th>Thêm thuộc tính</th>
                         <th>Action</th>
                     </tr>
                     </thead>

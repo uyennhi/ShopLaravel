@@ -10,13 +10,13 @@
         @endif
         <div class="widget-box">
             <div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
-                <h5>Add New Products</h5>
+                <h5>Thêm sản phẩm mới</h5>
             </div>
             <div class="widget-content nopadding">
                 <form action="{{route('product.store')}}" method="post" class="form-horizontal" enctype="multipart/form-data">
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                     <div class="control-group">
-                        <label class="control-label">Select Category</label>
+                        <label class="control-label">Chọn danh mục</label>
                         <div class="controls">
                             <select name="categories_id" style="width: 415px;">
                                 @foreach($categories as $key=>$value)
@@ -36,21 +36,21 @@
                         </div>
                     </div>
                     <div class="control-group">
-                        <label for="p_name" class="control-label">Name</label>
+                        <label for="p_name" class="control-label">Tên sản phẩm</label>
                         <div class="controls{{$errors->has('p_name')?' has-error':''}}">
                             <input type="text" name="p_name" id="p_name" class="form-control" value="{{old('p_name')}}" title="" required="required" style="width: 400px;">
                             <span class="text-danger">{{$errors->first('p_name')}}</span>
                         </div>
                     </div>
                     <div class="control-group">
-                        <label for="p_code" class="control-label">Code</label>
+                        <label for="p_code" class="control-label">Mã sản phẩm</label>
                         <div class="controls{{$errors->has('p_code')?' has-error':''}}">
                             <input type="text" name="p_code" id="p_code" class="form-control" value="{{old('p_code')}}" title="" required="required" style="width: 400px;">
                             <span class="text-danger">{{$errors->first('p_code')}}</span>
                         </div>
                     </div>
                     <div class="control-group">
-                        <label for="p_color" class="control-label">Color</label>
+                        <label for="p_color" class="control-label">Màu sắc</label>
                         <div class="controls{{$errors->has('p_color')?' has-error':''}}">
                             <input type="text" name="p_color" id="p_color" value="{{old('p_color')}}" required="required" style="width: 400px;">
                             <span class="text-danger">{{$errors->first('p_color')}}</span>
@@ -64,7 +64,7 @@
                         </div>
                     </div>
                     <div class="control-group">
-                        <label for="price" class="control-label">Price</label>
+                        <label for="price" class="control-label">Giá</label>
                         <div class="controls{{$errors->has('price')?' has-error':''}}">
                             <div class="input-prepend"> <span class="add-on">$</span>
                                 <input type="number" name="price" id="price" class="" value="{{old('price')}}" title="" required="required">

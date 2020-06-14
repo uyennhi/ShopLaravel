@@ -25,7 +25,7 @@
                             </li>
                             <li>
                                 <form action="{{route('image-gallery.store')}}" method="post" role="form" enctype="multipart/form-data">
-                                    <legend>Can Add Multi Images</legend>
+                                    <legend>Có thể add nhiều hình ảnh</legend>
                                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                                     <div class="form-group">
                                         <input type="hidden" name="products_id" value="{{$product->id}}">
@@ -43,7 +43,7 @@
             <div class="span6">
                 <div class="widget-box">
                     <div class="widget-title"> <span class="icon"><i class="icon-time"></i></span>
-                        <h5>List Images Galleries</h5>
+                        <h5>Danh sách Ảnh</h5>
                     </div>
                     <div class="widget-content nopadding">
                         <table class="table table-striped table-bordered">

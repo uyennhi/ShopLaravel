@@ -1,6 +1,6 @@
 <!--Header-part-->
-<div id="header">
-    <h1><a href="dashboard.html">Laravel Admin</a></h1>
+<div id="header" style="background-image: linear-gradient(to right, rgba(255,0,0,0), rgba(255,0,0,1));;">
+<img src="{{asset('img/S1.png')}}" style="width:77px;" alt="" /> <span style="font-size: 40px;">ShOP</span>
 </div>
 <!--close-Header-part-->
 <!--top-Header-menu-->

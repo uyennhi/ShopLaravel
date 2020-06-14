@@ -1,6 +1,6 @@
 <!--sidebar-menu-->
-<div id="sidebar"><a href="{{url('/admin')}}" class="visible-phone"><i class="icon icon-home"></i> Dashboard</a>
-    <ul>
+<div id="sidebar" ><a href="{{url('/admin')}}" class="visible-phone"><i class="icon icon-home"></i> Dashboard</a>
+    <ul style="background-image: linear-gradient(to right, rgba(255,0,0,0), rgba(255,0,0,1));;">
         <li{{$menu_active==1? ' class=active':''}}><a href="{{url('/admin')}}"><i class="icon icon-home"></i> <span>Dashboard</span></a> </li>
         <li class="submenu {{$menu_active==2? ' active':''}}"> <a href="#"><i class="icon icon-th-list"></i> <span>Danh mục</span></a>
             <ul>
@@ -35,7 +35,7 @@
         <li class="submenu {{$menu_active==7? ' active':''}}"> <a href="#"><i class="icon icon-th-list"></i> <span>Thống Kê</span></a>
             <ul>
               
-                <li><a href="">Thống kê Sản Phẩm</a></li>
+                <li><a href="{{url('/admin/laravel_google_chart')}}">Thống kê Sản Phẩm</a></li>
             </ul>
         </li>
     </ul>

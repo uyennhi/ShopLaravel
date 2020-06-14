@@ -32,7 +32,7 @@
                         </div>
                        
                         <div class="form-group"  >
-                            <label for="male">Đất Nước</label>
+                            <label for="male">Country</label>
                             <select name="billing_country" id="billing_country" class="form-control">
                                 @foreach($countries as $country)
                                     <option value="{{$country->country_name}}" {{$user_login->country==$country->country_name?' selected':''}}>{{$country->country_name}}</option>
@@ -75,7 +75,7 @@
                         </div>
                         
                         <div class="form-group">
-                            <label for="male">Đất Nước</label>
+                            <label for="male">Country</label>
                             <select name="shipping_country" id="shipping_country" class="form-control">
                                 @foreach($countries as $country)
                                     <option value="{{$country->country_name}}">{{$country->country_name}}</option>

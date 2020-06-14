@@ -60,15 +60,15 @@ $(document).ready(function(){
                 success:function(resp){
 					
                 	var arr=resp.split("#");
-                    $("#dynamic_price").html('US $'+arr[0]);
+                    $("#dynamic_price").html(arr[0]+'VNĐ');
                     $("#dynamicPriceInput").val(arr[0]);
                     if(arr[1]==0){
 						$("#buttonAddToCart").hide();
-						$("#availableStock").text("Out Of Stock");
+						$("#availableStock").text("Đã hết hàng");
                         $("#inputStock").val(0);
 					}else{
                         $("#buttonAddToCart").show();
-                        $("#availableStock").text("In Stock");
+                        $("#availableStock").text("Hàng còn lại trong kho");
                         $("#inputStock").val(arr[1]);
 					}
                 },error:function () {

@@ -100,4 +100,6 @@ Route::group(['prefix'=>'admin','middleware'=>['auth','admin']],function (){
     Route::resource('/coupon','CouponController');
     Route::get('delete-coupon/{id}','CouponController@destroy');
 
+    Route::get('/laravel_google_chart', 'LaravelGoogleGraph@index');
+
 });

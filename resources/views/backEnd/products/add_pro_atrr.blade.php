@@ -25,7 +25,7 @@
                                 </li>
                                 <li>
                                     <form action="{{route('product_attr.store')}}" method="post" role="form">
-                                        <legend>Add Attribute</legend>
+                                        <legend>Thêm thuộc tính</legend>
                                         <input type="hidden" name="_token" value="{{csrf_token()}}">
                                         <div class="form-group">
                                             <input type="hidden" name="products_id" value="{{$product->id}}">
@@ -45,7 +45,7 @@
                 <div class="span6">
                     <div class="widget-box">
                         <div class="widget-title"> <span class="icon"><i class="icon-time"></i></span>
-                            <h5>List Products Attribute</h5>
+                            <h5>Danh sách thuộc tính sản phẩm</h5>
                         </div>
                         <div class="widget-content nopadding">
                             <form action="{{route('product_attr.update',$product->id)}}" method="post" role="form">
@@ -54,10 +54,10 @@
                                 <table class="table table-striped table-bordered">
                                 <thead>
                                 <tr>
-                                    <th>SKU</th>
+                                    <th>Hãng</th>
                                     <th>Size</th>
-                                    <th>Price</th>
-                                    <th>Stock</th>
+                                    <th>Giá</th>
+                                    <th>SL trong kho</th>
                                     <th>Action</th>
                                 </tr>
                                 </thead>

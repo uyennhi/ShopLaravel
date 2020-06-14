@@ -17,7 +17,7 @@
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                     {{method_field("PUT")}}
                     <div class="control-group">
-                        <label class="control-label">Select Category</label>
+                        <label class="control-label">Chọn danh mục</label>
                         <div class="controls">
                             <select name="categories_id" style="width: 415px;">
                                 @foreach($categories as $key=>$value)
@@ -37,35 +37,35 @@
                         </div>
                     </div>
                     <div class="control-group">
-                        <label for="p_name" class="control-label">Name</label>
+                        <label for="p_name" class="control-label">Tên sản phẩm</label>
                         <div class="controls{{$errors->has('p_name')?' has-error':''}}">
                             <input type="text" name="p_name" id="p_name" class="form-control" value="{{$edit_product->p_name}}" title="" required="required" style="width: 400px;">
                             <span class="text-danger">{{$errors->first('p_name')}}</span>
                         </div>
                     </div>
                     <div class="control-group">
-                        <label for="p_code" class="control-label">Code</label>
+                        <label for="p_code" class="control-label">Mã sản phẩm</label>
                         <div class="controls{{$errors->has('p_code')?' has-error':''}}">
                             <input type="text" name="p_code" id="p_code" class="form-control" value="{{$edit_product->p_code}}" title="" required="required" style="width: 400px;">
                             <span class="text-danger">{{$errors->first('p_code')}}</span>
                         </div>
                     </div>
                     <div class="control-group">
-                        <label for="p_color" class="control-label">Color</label>
+                        <label for="p_color" class="control-label">Màu</label>
                         <div class="controls{{$errors->has('p_color')?' has-error':''}}">
                             <input type="text" name="p_color" id="p_color" value="{{$edit_product->p_color}}" required="required" style="width: 400px;">
                             <span class="text-danger">{{$errors->first('p_color')}}</span>
                         </div>
                     </div>
                     <div class="control-group">
-                        <label for="description" class="control-label">Description</label>
+                        <label for="description" class="control-label">Mô tả</label>
                         <div class="controls{{$errors->has('description')?' has-error':''}}">
                             <textarea class="textarea_editor span12" name="description" id="description" rows="6" placeholder="Product Description" style="width: 580px;">{{$edit_product->description}}</textarea>
                             <span class="text-danger">{{$errors->first('description')}}</span>
                         </div>
                     </div>
                     <div class="control-group">
-                        <label for="price" class="control-label">Price</label>
+                        <label for="price" class="control-label">Giá</label>
                         <div class="controls{{$errors->has('price')?' has-error':''}}">
                             <div class="input-prepend"> <span class="add-on">$</span>
                                 <input type="number" name="price" id="price" class="" value="{{$edit_product->price}}" title="" required="required">

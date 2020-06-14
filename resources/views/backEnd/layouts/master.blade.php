@@ -19,6 +19,8 @@
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js" charset="utf-8"></script>
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 </head>
 <body>
 
@@ -26,7 +28,7 @@
 @include('backEnd.layouts.nav')
 
 <!--main-container-part-->
-<div id="content">
+<div id="content" style="background-color: white;">
     @yield('content')
 </div>
 @include('backEnd.layouts.footer')

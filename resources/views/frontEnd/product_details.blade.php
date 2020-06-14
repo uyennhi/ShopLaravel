@@ -47,15 +47,15 @@
                         <p>Code ID: {{$detail_product->p_code}}</p>
                         <span>
                             <select name="size" id="idSize" class="form-control">
-                        	<option value="">Select Size</option>
+                        	<option value="">Chọn Size</option>
                             @foreach($detail_product->attributes as $attrs)
                                 <option value="{{$detail_product->id}}-{{$attrs->size}}">{{$attrs->size}}</option>
                             @endforeach
                         </select>
                         </span><br>
                         <span>
-                            <span id="dynamic_price">US ${{$detail_product->price}}</span>
-                            <label>Quantity:</label>
+                            <span id="dynamic_price">{{$detail_product->price}} VNĐ</span>
+                            <label>Số lượng:</label>
                             <input type="text" name="quantity" value="{{$totalStock}}" id="inputStock"/>
                             @if($totalStock>0)
                             <button type="submit" class="btn btn-fefault cart" id="buttonAddToCart">
@@ -64,14 +64,14 @@
                             </button>
                             @endif
                         </span>
-                        <p><b>Availability:</b>
+                        <p><b>Tình trạng:</b>
                             @if($totalStock>0)
-                                <span id="availableStock">In Stock</span>
+                                <span id="availableStock">Hàng còn trong kho</span>
                             @else
-                                <span id="availableStock">Out of Stock</span>
+                                <span id="availableStock">Đã hết hàng</span>
                             @endif
                         </p>
-                        <p><b>Condition:</b> New</p>
+                        <p><b>Hàng:</b> New</p>
                         <a href=""><img src="{{asset('frontEnd/images/product-details/share.png')}}" class="share img-responsive"  alt="" /></a>
                     </div><!--/product-information-->
                 </form>

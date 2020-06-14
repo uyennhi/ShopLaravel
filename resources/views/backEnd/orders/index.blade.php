@@ -151,7 +151,7 @@
             var id=$(this).attr('rel');
             var deleteFunction=$(this).attr('rel1');
             swal({
-                title:'xác nhận đã xử lí?',
+                title:'xác nhận đã vận chuyển?',
                 text:"Bạn không thể thay đổi!",
                 type:'warning',
                 showCancelButton:true,
