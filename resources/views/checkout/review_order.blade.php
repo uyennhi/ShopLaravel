@@ -5,7 +5,7 @@
 @section('content')
     <div class="container">
         <div class="step-one">
-            <h2 class="heading">Shipping To</h2>
+            <h2 class="heading">Vận Chuyển đến</h2>
         </div>
         <div class="row">
             <form action="{{url('/submit-order')}}" method="post" class="form-horizontal">
@@ -40,9 +40,9 @@
                                 <th>Name</th>
                                 <th>Address</th>
                                 <th>City</th>
-                                <th>State</th>
+                                
                                 <th>Country</th>
-                                <th>Pincode</th>
+                                
                                 <th>Mobile</th>
                             </tr>
                             </thead>
@@ -51,9 +51,9 @@
                                 <td>{{$shipping_address->name}}</td>
                                 <td>{{$shipping_address->address}}</td>
                                 <td>{{$shipping_address->city}}</td>
-                                <td>{{$shipping_address->state}}</td>
+                                
                                 <td>{{$shipping_address->country}}</td>
-                                <td>{{$shipping_address->pincode}}</td>
+        
                                 <td>{{$shipping_address->mobile}}</td>
                             </tr>
                             </tbody>
@@ -61,7 +61,7 @@
                     </div>
                     <section id="cart_items">
                         <div class="review-payment">
-                            <h2>Review & Payment</h2>
+                            <h2>Xem Đơn và Thanh Toán</h2>
                         </div>
                         <div class="table-responsive cart_info">
                             <table class="table table-condensed">
@@ -69,9 +69,9 @@
                                 <tr class="cart_menu">
                                     <td class="image">Item</td>
                                     <td class="description"></td>
-                                    <td class="price">Price</td>
-                                    <td class="quantity">Quantity</td>
-                                    <td class="total">Total</td>
+                                    <td class="price">Giá</td>
+                                    <td class="quantity">Số lượng</td>
+                                    <td class="total">Tổng cộng</td>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -90,13 +90,13 @@
                                         <p>{{$cart_data->product_code}} | {{$cart_data->size}}</p>
                                     </td>
                                     <td class="cart_price">
-                                        <p>${{$cart_data->price}}</p>
+                                        <p>{{$cart_data->price}} VNĐ</p>
                                     </td>
                                     <td class="cart_quantity">
                                         <p>{{$cart_data->quantity}}</p>
                                     </td>
                                     <td class="cart_total">
-                                        <p class="cart_total_price">$ {{$cart_data->price*$cart_data->quantity}}</p>
+                                        <p class="cart_total_price"> {{$cart_data->price*$cart_data->quantity}} VNĐ</p>
                                     </td>
                                 </tr>
                                 @endforeach
@@ -105,8 +105,8 @@
                                     <td colspan="2">
                                         <table class="table table-condensed total-result">
                                             <tr>
-                                                <td>Cart Sub Total</td>
-                                                <td>$ {{$total_price}}</td>
+                                                <td>Giỏ hàng</td>
+                                                <td> {{$total_price}} VNĐ</td>
                                             </tr>
                                             @if(Session::has('discount_amount_price'))
                                                 <tr class="shipping-cost">
@@ -114,13 +114,13 @@
                                                     <td>$ {{Session::get('discount_amount_price')}}</td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Total</td>
-                                                    <td><span>$ {{$total_price-Session::get('discount_amount_price')}}</span></td>
+                                                    <td>Tổng</td>
+                                                    <td><span> {{$total_price-Session::get('discount_amount_price')}} VNĐ</span></td>
                                                 </tr>
                                             @else
                                                 <tr>
-                                                    <td>Total</td>
-                                                    <td><span>$ {{$total_price}}</span></td>
+                                                    <td>Tổng</td>
+                                                    <td><span> {{$total_price}} VNĐ</span></td>
                                                 </tr>
                                             @endif
                                         </table>
@@ -130,12 +130,12 @@
                             </table>
                         </div>
                         <div class="payment-options">
-                            <span>Select Payment Method : </span>
+                            <span>Chọn phương thức thanh toán : </span>
                         <span>
-                            <label><input type="radio" name="payment_method" value="COD" checked> Cash On Delivery</label>
+                            <label><input type="radio" name="payment_method" value="COD" checked>Thanh Toán Khi Giao Hàng</label>
                         </span>
                             <span>
-                            <label><input type="radio" name="payment_method" value="Paypal"> Paypal</label>
+                            
                         </span>
                             <button type="submit" class="btn btn-primary" style="float: right;">Order Now</button>
                         </div>

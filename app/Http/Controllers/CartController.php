@@ -43,8 +43,28 @@ class CartController extends Controller
                 $inputToCart['size']=$sizeAtrr[1];
                 $inputToCart['product_code']=$stockAvailable->sku;
                 
-                Cart_model::create($inputToCart);
-                return back()->with('message','Đã thêm vào giỏ hàng');
+                $count_duplicateItems=Cart_model::where(['products_id'=>$inputToCart['products_id'],
+                    'product_color'=>$inputToCart['product_color'],
+                    'size'=>$inputToCart['size'],'session_id'=>$inputToCart['session_id']])->count();
+                if($count_duplicateItems>0){
+                    $quanity_duplicateItems=Cart_model::select('quantity')->where(['products_id'=>$inputToCart['products_id'],
+                    'product_color'=>$inputToCart['product_color'],
+                    'size'=>$inputToCart['size'],'session_id'=>$inputToCart['session_id']])->first();
+
+                    if($stockAvailable->stock >= $quanity_duplicateItems->quantity + $inputToCart['quantity']){
+                        $duplicateItems=Cart_model::where(['products_id'=>$inputToCart['products_id'],
+                        'product_color'=>$inputToCart['product_color'],
+                        'size'=>$inputToCart['size'],'session_id'=>$inputToCart['session_id']])->increment('quantity',$inputToCart['quantity']);
+                    
+                        return back()->with('message','Sản phẩm đã có trong giỏ hàng. Hệ thống đã cập nhật số lượng');
+                    }else{
+                        return back()->with('message','Sản phẩm đã có trong giỏ hàng. Số lượng trong kho không đủ.');
+                    }
+                }else{
+                    Cart_model::create($inputToCart);
+                    return back()->with('message','Đã thêm vào giỏ hàng');
+                }
+               
                 
             }else{
                 return back()->with('message','Hàng Không đủ vui lòng chọn lại.');
